@@ -2,8 +2,15 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from collections import defaultdict
 
 from .models import Order, Trade
+
+rs = set([1,2,3])
+
+stock_thread_dict = dict()
+
+stock_list_dict = dict()
 
 class OrderCreateView(LoginRequiredMixin, CreateView):
     model = Order
