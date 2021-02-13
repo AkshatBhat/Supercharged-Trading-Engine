@@ -15,7 +15,7 @@ class Order(models.Model):
     price = models.FloatField(default=0.0, validators=[MinValueValidator(0.0)])
     quantity = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     stock_code = models.CharField(max_length=6, validators=[MinLengthValidator(6)])
-    timestamp = models.DateTimeField(default=timezone.now())
+    timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f'{self.user}'
@@ -24,7 +24,7 @@ class Trade(models.Model):
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_user')
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='seller_user')
     type = models.CharField(max_length=1, choices=TYPE_CHOICES)
-    timestamp = models.DateTimeField(default=timezone.now())
+    timestamp = models.DateTimeField(default=timezone.now)
     price = models.FloatField(default=0.0, validators=[MinValueValidator(0.0)])
     quantity = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     stock_code = models.CharField(max_length=6, validators=[MinLengthValidator(6)])
