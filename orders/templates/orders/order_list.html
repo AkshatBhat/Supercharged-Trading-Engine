@@ -71,8 +71,10 @@
         <td class="text-center">{{order.quantity}}</td>
         <td class="text-center">{{order.stock_code}}</td>
         <td class="text-center">{{order.timestamp}}</td>
+        {% if order.user.username == user.username %}
           <td><a href="{% url 'order-delete' order.pk %}"><button class="btn btn-danger">Delete</button></a></td>
           <td><a href="{% url 'order-update' order.pk%}"><button class="btn btn-primary">Update</button></a></td>
+        {% endif %}
       </tr>
         {% endfor %}
         {% endif %}

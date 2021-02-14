@@ -17,7 +17,8 @@
         overflow-x: hidden;
         background-image: url('https://image.freepik.com/free-vector/business-candle-stick-graph-chart-stock-market-investment-trading-blue-background_62391-73.jpg');
 		    background-size: cover;
-        background-repeat: no-repeat;
+        height: 1000px;
+        max-height: 180%;
     }
     .navbar-nav{
       background-color: transparent;
@@ -36,9 +37,9 @@
 <br>
 <br>
 <br>
-<div class="col-md-3">
-	<div class="content-section">
-	  <form method="POST" style="left: 250px;">
+<div class="col-md-3" style="margin-left: 100px;">
+	<div class="content-section" >
+	  <form method="POST" >
 		{% csrf_token %}
 		<fieldset class="form-group" style="color: lightgray;">
 		  <legend class="border-bottom mb-4" style="color: lightgray;font-size: 28px;">Register</legend>
@@ -51,7 +52,7 @@
 	  </form>
 	</div>
 </div>
-<div class="row" style="margin-left: 600px;margin-top: -700px;">
+<div class="row" style="margin-left: 600px;margin-top: -650px;">
   <div class="col-md-8">
     <div id="carouselExampleIndicators" class="carousel slide container carousel-fade mb-5" data-ride="carousel" style="width: 600px;">
       <ol class="carousel-indicators">
