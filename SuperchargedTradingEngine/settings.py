@@ -139,3 +139,6 @@ LOGIN_REDIRECT_URL = 'orders-list'
 LOGIN_URL = 'login'
 
 ATOMIC_REQUESTS=True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -71,15 +71,15 @@ class OrderBook:
 
 class MatchingEngine:
 
-    def __init__(self, threaded=False):
+    def __init__(self, threaded=True):
         self.queue = deque()
         self.orderbook = OrderBook()
         self.trades = deque()
         self.threaded = threaded
         
-        # if self.threaded:
-        #     self.thread = threading.Thread(target=self.run)
-        #     self.thread.start()
+        if self.threaded:
+            self.thread = threading.Thread(target=self.run)
+            self.thread.start()
 
     def process(self, order):
         if self.threaded:
@@ -197,5 +197,4 @@ class MatchingEngine:
             if len(self.queue) > 0:
                 order = self.queue.popleft()
                 self.match_limit_order(order)
-                if len(self.queue)==0:
-                    break
+                

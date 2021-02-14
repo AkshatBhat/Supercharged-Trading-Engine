@@ -15,18 +15,18 @@ def create_order(sender, instance, created, **kwargs):
 
         engine = m_engine.MatchingEngine()
 
-        # if instance.stock_code not in stock_thread_dict.keys():
-        #     t = threading.Thread(target=engine.run,daemon=True)
-        #     t.start()
-        #     stock_thread_dict[instance.stock_code] = t
+        if instance.stock_code not in stock_thread_dict.keys():
+            t = threading.Thread(target=engine.run,daemon=True)
+            t.start()
+            stock_thread_dict[instance.stock_code] = t
 
-        # curr_thread = stock_thread_dict[instance.stock_code]
-        # print("Alive",curr_thread.is_alive())
+        curr_thread = stock_thread_dict[instance.stock_code]
+        print("Alive",curr_thread.is_alive())
 
         for order in order_list:
             engine.process(order)
 
-        # print(stock_thread_dict)
+        print(stock_thread_dict)
     print('Order signal called\n')
 
 @receiver(post_delete, sender=Order)
