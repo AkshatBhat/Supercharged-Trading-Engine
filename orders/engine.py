@@ -109,7 +109,7 @@ class MatchingEngine:
                 if filled + ask.quantity <= order.quantity: # order not yet filled, ask will be consumed whole
                     filled += ask.quantity
                     # Trade(order.id, ask.id, ask.price, ask.quantity)
-                    trade = Trade.objects.create(buyer=order.user,seller=ask.user,type=ask.type,price=order.price,quantity=order.quantity,stock_code=order.stock_code)
+                    trade = Trade.objects.create(buyer=order.user,seller=ask.user,type=ask.type,price=order.price,quantity=ask.quantity,stock_code=order.stock_code)
                     self.trades.append(trade)
                     consumed_asks.append(ask)
                     if filled == order.quantity:
