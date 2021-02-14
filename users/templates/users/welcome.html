@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Online Shoppong Site</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'shopping/boot.css' %}">
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function(){
+  			$('.header').height($(window).height());
+		})
+	</script>
+	<nav class="navbar navbar-expand-md">
+	  	<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+	    	<span class="navbar-toggler-icon"></span>
+	  	</button>
+	  	<div class="collapse navbar-collapse" id="main-navigation">
+	   	 	<ul class="ml-auto navbar-nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+		      	<li class="nav-item">
+		        	<a class="nav-link" href="{% url 'login' %}">Login</a>
+		      	</li>
+                {% endif %}
+		    </ul>
+		</div>
+	</nav>
+	<header class="page-header header container-fluid">
+		<div class="description">
+			<h1>WELCOME TO THE URBANTREND</h1>
+			<p>Welcoming you to India's best Online Shopping Website where you can find everything you want to buy</p>
+		</div>
+	</header>
+	<section id="newsletter">
+		<div class="container">
+			<marquee>Welcome to URBANTREND, India's Largest Online Shopping Website!!</marquee>
+		</div>
+	</section>
+	<!-- carousel section -->
+	<div id="demo" class="carousel slide container" data-ride="carousel" style="width:500px;">
+	  	<!-- Indicators -->
+		<ul class="carousel-indicators">
+	    	<li data-target="#demo" data-slide-to="0" class="active"></li>
+	    	<li data-target="#demo" data-slide-to="1"></li>
+	    	<li data-target="#demo" data-slide-to="2"></li>
+	  	</ul>
+		<!-- The slideshow -->
+		<div class="carousel-inner">
+		   	<div class="carousel-item active">
+		     	<img src="https://www.shopperwear.com/media/catalog/product/cache/1/thumbnail/600x/17f82f742ffe127f42dca9de	82fb58b1/2/0/2019-fashion-sweater-mens-cardigan-jacquard-slim-fit-jumpers-knitwear-vest-autumn-korean-style-casual-mens-clothes-extra-image-3_2.jpg" style="width: 100%; height: 400px ;padding: 20px">
+		  <!-- <div class="carousel-caption">
+		      		<h3 class="feature-title">CLOTHES</h3>
+		      		<p>You can get all types of clothes for men,women and kids</p>
+		      	</div> -->
+		    </div>
+		    <div class="carousel-item">
+		      	<img src="https://rukminim1.flixcart.com/image/714/857/k3yrte80/shoe/u/d/3/5011-10-camfoot-red-original-imafmzy3tzthgrgd.jpeg?q=50" style="width: 100%; height: 400px;padding: 20px">
+		    </div>
+		    <div class="carousel-item">
+		      	<img src="https://images-na.ssl-images-amazon.com/images/I/51rRwx6wJgL._SY355_.jpg" style="width: 100%;height: 400px;padding: 20px">
+		    </div>
+		    <div class="carousel-item">
+		      	<img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/amazon-rivet-furniture-1533048038.jpg?crop=1.00xw:0.502xh;0,0.423xh&resize=1200:*" style="width: 100%;height: 400px;padding: 20px">
+		    </div>
+		    <div class="carousel-item">
+		      	<img src="https://www.sportssensors.eu/images/content/sports.png" style="width: 100%;height: 400px;padding: 20px">
+		    </div>
+		    <div class="carousel-item">
+		      	<img src="https://images-na.ssl-images-amazon.com/images/I/91eI1ea18iL._SX425_.jpg" style="width: 100%;height: 400px;padding: 20px">
+		    </div>
+		</div>
+
+		<!-- Left and right controls -->
+	 	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+	    	<span class="carousel-control-prev-icon"></span>
+	    </a>
+		<a class="carousel-control-next" href="#demo" data-slide="next">
+		   	<span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+	<footer class="page-footer">
+  		<div class="container">
+    		<div class="row">
+      			<div class="col-lg-8 col-md-8 col-sm-12">
+			      	<h6 class="text-uppercase font-weight-bold">Additional Information</h6>
+			      	<p>This is a website where you can buy all type of products online with the best customer service provided.</p>
+			      	<p>If you have any question regarding anything ,please contact us on the mobile number or email us at the email address given on the site.</p>
+    			</div>
+    			<div class="col-lg-4 col-md-4 col-sm-12">
+      				<h6 class="text-uppercase font-weight-bold">Contact</h6>
+      					<p>1640 Riverside Drive, Antela Hill, Mumbai
+      					<br/>info@urbantrend.com
+      					<br/>+91 98 375 567 88
+      					<br/>+91 98 193 725 72
+      					</p>
+    			</div>
+  			</div>
+  		<div class="footer-copyright text-center">© 2020 Copyright: urbantrend.com</div>
+	</footer>
+</body>
+</html>

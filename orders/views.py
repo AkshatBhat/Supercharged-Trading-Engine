@@ -18,6 +18,7 @@ class OrderListView(LoginRequiredMixin, ListView):
     model = Order
     template_name = 'orders/order_list.html'
     ordering =['-timestamp']
+    context_object_name='orders'
 
 class OrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Order
@@ -50,3 +51,4 @@ class TradeListView(LoginRequiredMixin, ListView):
     model = Trade
     template_name = 'orders/trade_list.html'
     ordering =['-timestamp']
+    context_object_name='trades'

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Trade List</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+      html, body {
+        overflow-x: hidden;
+        background-image: url("https://image.freepik.com/free-vector/business-candle-stick-graph-chart-stock-market-investment-trading-blue-background_62391-73.jpg");
+        background-size: cover;
+      }
+      .nav-item a:hover{
+        border-bottom: 3px solid rgb(49, 17, 192);
+      }
+  </style>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <p class="text-light"><h3 style="color: white;">Supercharged Trading Engine</h3></p>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="text-ligt nav-link" href="{%url 'order-create' %}" style="color: white;font-size: 20px;padding-right: 8px;">Create Order</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-ligt nav-link" href="{%url 'trades-list' %}" style="color: white;font-size: 20px;padding-right: 8px;">All Trades</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-ligt nav-link" href="{%url 'orders-list' %}" style="color: white;font-size: 20px;padding-right: 8px;">All Orders</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="text-ligt nav-link" href="{% url 'logout' %} " style="color: white; font-size: 20px;padding-right: 20px;">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="text-ligt nav-link" href="#" style="color: white;font-size: 20px;padding-right: 5px;">{{user.username}}</a>
+      </li>
+    </ul>
+  </nav>
+<br>
+<div class="container">    
+  <table class="table table-dark table-hover shadow-lg">
+    <thead>
+      <tr>
+        <th class="text-center font-weight-bolder  text-uppercase" style="color: burlywood;">Buyer</th>
+        <th class="text-center font-weight-bolder  text-uppercase" style="color: burlywood;">Seller</th>
+      <th class="text-center font-weight-bolder  text-uppercase" style="color: burlywood;">Type</th>
+        <th class="text-center font-weight-bolder text-uppercase" style="color: burlywood;">Price</th>
+        <th class="text-center font-weight-bolder text-uppercase" style="color: burlywood;">Quantity</th>
+        <th class="text-center font-weight-bolder text-uppercase" style="color: burlywood;">Stock Code</th>
+        <th class="text-center font-weight-bolder text-uppercase" style="color:burlywood;">Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%if trades%}
+        {% for trade in trades%}
+        <tr>
+            <td class="text-center">{{trade.buyer}}</td>
+            <td class="text-center">{{trade.seller}}</td>  
+          <td class="text-center">{{trade.get_type_display}}</td>
+        <td class="text-center">{{trade.price}}</td>
+        <td class="text-center">{{trade.quantity}}</td>
+        <td class="text-center">{{trade.stock_code}}</td>
+        <td class="text-center">{{trade.timestamp}}</td>
+      </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+  </table>
+</div>
+</body>
+</html

@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MinLengthValidator
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 
 TYPE_CHOICES = (('M', 'Market'), ('L', 'Limit'),)
 SIDE_CHOICES = (('B', 'Buy'), ('L', 'Sell'),)
@@ -19,6 +20,9 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.user}'
+
+    def get_absolute_url(self):
+        return reverse('orders-list')
 
 class Trade(models.Model):
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='buyer_user')
