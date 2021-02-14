@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse
 
 TYPE_CHOICES = (('M', 'Market'), ('L', 'Limit'),)
-SIDE_CHOICES = (('B', 'Buy'), ('L', 'Sell'),)
+SIDE_CHOICES = (('B', 'Buy'), ('S', 'Sell'),)
 
 class Order(models.Model):
 
@@ -19,7 +19,7 @@ class Order(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f'{self.user}'
+        return f'{self.user}-{self.timestamp}'
 
     def get_absolute_url(self):
         return reverse('orders-list')
@@ -35,7 +35,7 @@ class Trade(models.Model):
 
     def save(self, *args, **kwargs):
         if self.buyer != self.seller:
-            super(Order, self).save(*args, **kwargs)
+            super(Trade, self).save(*args, **kwargs)
         else:
             raise ValidationError('Buyer and Seller cannot be same')
 
